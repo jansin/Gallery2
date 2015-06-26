@@ -22,7 +22,6 @@ import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Rect;
 import android.net.Uri;
@@ -46,7 +45,6 @@ import com.android.gallery3d.data.ComboAlbum;
 import com.android.gallery3d.data.DataManager;
 import com.android.gallery3d.data.FilterDeleteSet;
 import com.android.gallery3d.data.FilterSource;
-import com.android.gallery3d.data.LocalImage;
 import com.android.gallery3d.data.MediaDetails;
 import com.android.gallery3d.data.MediaItem;
 import com.android.gallery3d.data.MediaObject;
@@ -58,9 +56,6 @@ import com.android.gallery3d.data.SecureSource;
 import com.android.gallery3d.data.SnailAlbum;
 import com.android.gallery3d.data.SnailItem;
 import com.android.gallery3d.data.SnailSource;
-import com.android.gallery3d.filtershow.FilterShowActivity;
-import com.android.gallery3d.filtershow.crop.CropActivity;
-import com.android.gallery3d.picasasource.PicasaSource;
 import com.android.gallery3d.ui.DetailsHelper;
 import com.android.gallery3d.ui.DetailsHelper.CloseListener;
 import com.android.gallery3d.ui.DetailsHelper.DetailsSource;
@@ -659,15 +654,15 @@ public abstract class PhotoPage extends ActivityState implements
 
     private void launchTinyPlanet() {
         // Deep link into tiny planet
-        MediaItem current = mModel.getMediaItem(0);
-        Intent intent = new Intent(FilterShowActivity.TINY_PLANET_ACTION);
-        intent.setClass(mActivity, FilterShowActivity.class);
-        intent.setDataAndType(current.getContentUri(), current.getMimeType())
-            .setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        intent.putExtra(FilterShowActivity.LAUNCH_FULLSCREEN,
-                mActivity.isFullscreen());
-        mActivity.startActivityForResult(intent, REQUEST_EDIT);
-        overrideTransitionToEditor();
+//        MediaItem current = mModel.getMediaItem(0);
+//        Intent intent = new Intent(FilterShowActivity.TINY_PLANET_ACTION);
+//        intent.setClass(mActivity, FilterShowActivity.class);
+//        intent.setDataAndType(current.getContentUri(), current.getMimeType())
+//            .setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+//        intent.putExtra(FilterShowActivity.LAUNCH_FULLSCREEN,
+//                mActivity.isFullscreen());
+//        mActivity.startActivityForResult(intent, REQUEST_EDIT);
+//        overrideTransitionToEditor();
     }
 
     private void launchCamera() {
@@ -676,47 +671,47 @@ public abstract class PhotoPage extends ActivityState implements
     }
 
     private void launchPhotoEditor() {
-        MediaItem current = mModel.getMediaItem(0);
-        if (current == null || (current.getSupportedOperations()
-                & MediaObject.SUPPORT_EDIT) == 0) {
-            return;
-        }
-
-        Intent intent = new Intent(ACTION_NEXTGEN_EDIT);
-
-        intent.setDataAndType(current.getContentUri(), current.getMimeType())
-                .setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        if (mActivity.getPackageManager()
-                .queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY).size() == 0) {
-            intent.setAction(Intent.ACTION_EDIT);
-        }
-        intent.putExtra(FilterShowActivity.LAUNCH_FULLSCREEN,
-                mActivity.isFullscreen());
-        ((Activity) mActivity).startActivityForResult(Intent.createChooser(intent, null),
-                REQUEST_EDIT);
-        overrideTransitionToEditor();
+//        MediaItem current = mModel.getMediaItem(0);
+//        if (current == null || (current.getSupportedOperations()
+//                & MediaObject.SUPPORT_EDIT) == 0) {
+//            return;
+//        }
+//
+//        Intent intent = new Intent(ACTION_NEXTGEN_EDIT);
+//
+//        intent.setDataAndType(current.getContentUri(), current.getMimeType())
+//                .setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+//        if (mActivity.getPackageManager()
+//                .queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY).size() == 0) {
+//            intent.setAction(Intent.ACTION_EDIT);
+//        }
+//        intent.putExtra(FilterShowActivity.LAUNCH_FULLSCREEN,
+//                mActivity.isFullscreen());
+//        ((Activity) mActivity).startActivityForResult(Intent.createChooser(intent, null),
+//                REQUEST_EDIT);
+//        overrideTransitionToEditor();
     }
 
     private void launchSimpleEditor() {
-        MediaItem current = mModel.getMediaItem(0);
-        if (current == null || (current.getSupportedOperations()
-                & MediaObject.SUPPORT_EDIT) == 0) {
-            return;
-        }
-
-        Intent intent = new Intent(ACTION_SIMPLE_EDIT);
-
-        intent.setDataAndType(current.getContentUri(), current.getMimeType())
-                .setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        if (mActivity.getPackageManager()
-                .queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY).size() == 0) {
-            intent.setAction(Intent.ACTION_EDIT);
-        }
-        intent.putExtra(FilterShowActivity.LAUNCH_FULLSCREEN,
-                mActivity.isFullscreen());
-        ((Activity) mActivity).startActivityForResult(Intent.createChooser(intent, null),
-                REQUEST_EDIT);
-        overrideTransitionToEditor();
+//        MediaItem current = mModel.getMediaItem(0);
+//        if (current == null || (current.getSupportedOperations()
+//                & MediaObject.SUPPORT_EDIT) == 0) {
+//            return;
+//        }
+//
+//        Intent intent = new Intent(ACTION_SIMPLE_EDIT);
+//
+//        intent.setDataAndType(current.getContentUri(), current.getMimeType())
+//                .setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+//        if (mActivity.getPackageManager()
+//                .queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY).size() == 0) {
+//            intent.setAction(Intent.ACTION_EDIT);
+//        }
+//        intent.putExtra(FilterShowActivity.LAUNCH_FULLSCREEN,
+//                mActivity.isFullscreen());
+//        ((Activity) mActivity).startActivityForResult(Intent.createChooser(intent, null),
+//                REQUEST_EDIT);
+//        overrideTransitionToEditor();
     }
 
     private void requestDeferredUpdate() {
@@ -1042,17 +1037,17 @@ public abstract class PhotoPage extends ActivityState implements
                         SlideshowPage.class, REQUEST_SLIDESHOW, data);
                 return true;
             }
-            case R.id.action_crop: {
-                Activity activity = mActivity;
-                Intent intent = new Intent(CropActivity.CROP_ACTION);
-                intent.setClass(activity, CropActivity.class);
-                intent.setDataAndType(manager.getContentUri(path), current.getMimeType())
-                    .setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                activity.startActivityForResult(intent, PicasaSource.isPicasaImage(current)
-                        ? REQUEST_CROP_PICASA
-                        : REQUEST_CROP);
-                return true;
-            }
+//            case R.id.action_crop: {
+//                Activity activity = mActivity;
+//                Intent intent = new Intent(CropActivity.CROP_ACTION);
+//                intent.setClass(activity, CropActivity.class);
+//                intent.setDataAndType(manager.getContentUri(path), current.getMimeType())
+//                    .setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+//                activity.startActivityForResult(intent, PicasaSource.isPicasaImage(current)
+//                        ? REQUEST_CROP_PICASA
+//                        : REQUEST_CROP);
+//                return true;
+//            }
             case R.id.action_trim: {
                 Intent intent = new Intent(mActivity, TrimVideo.class);
                 intent.setData(manager.getContentUri(path));

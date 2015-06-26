@@ -16,6 +16,9 @@
 
 package com.android.photos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -34,12 +37,7 @@ import android.widget.ShareActionProvider.OnShareTargetSelectedListener;
 import com.android.gallery3d.R;
 import com.android.gallery3d.app.TrimVideo;
 import com.android.gallery3d.data.MediaObject;
-import com.android.gallery3d.filtershow.FilterShowActivity;
-import com.android.gallery3d.filtershow.crop.CropActivity;
 import com.android.gallery3d.util.GalleryUtils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MultiChoiceManager implements MultiChoiceModeListener,
     OnShareTargetSelectedListener, SelectionManager.SelectedUriSource {
@@ -237,13 +235,13 @@ public class MultiChoiceManager implements MultiChoiceModeListener,
                       .setAction(Intent.ACTION_EDIT);
                 mContext.startActivity(Intent.createChooser(intent, null));
                 return;
-            case R.id.menu_crop:
-                intent.setDataAndType(uri, mime)
-                      .setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                      .setAction(CropActivity.CROP_ACTION)
-                      .setClass(mContext, FilterShowActivity.class);
-                mContext.startActivity(intent);
-                return;
+//            case R.id.menu_crop:
+//                intent.setDataAndType(uri, mime)
+//                      .setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+//                      .setAction(CropActivity.CROP_ACTION)
+//                      .setClass(mContext, FilterShowActivity.class);
+//                mContext.startActivity(intent);
+//                return;
             case R.id.menu_trim:
                 intent.setData(uri)
                       .setClass(mContext, TrimVideo.class);

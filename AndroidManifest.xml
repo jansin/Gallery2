@@ -239,13 +239,13 @@
             </intent-filter>
         </activity>
 
-        <permission android:name="com.android.gallery3d.filtershow.permission.READ"
+       <!--  <permission android:name="com.android.gallery3d.filtershow.permission.READ"
                     android:protectionLevel="signature" />
 
         <permission android:name="com.android.gallery3d.filtershow.permission.WRITE"
-                    android:protectionLevel="signature" />
+                    android:protectionLevel="signature" /> -->
 
-        <provider
+ <!--        <provider
             android:name="com.android.gallery3d.filtershow.provider.SharedImageProvider"
             android:authorities="com.android.gallery3d.filtershow.provider.SharedImageProvider"
             android:grantUriPermissions="true"
@@ -291,7 +291,7 @@
                 <category android:name="android.intent.category.SELECTED_ALTERNATIVE" />
             </intent-filter>
         </activity>
-
+ -->
         <uses-library android:name="com.google.android.media.effects"
                 android:required="false" />
 

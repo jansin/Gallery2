@@ -32,7 +32,6 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.support.v4.print.PrintHelper;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
@@ -42,14 +41,11 @@ import com.android.gallery3d.R;
 import com.android.gallery3d.common.ApiHelper;
 import com.android.gallery3d.data.DataManager;
 import com.android.gallery3d.data.MediaItem;
-import com.android.gallery3d.filtershow.cache.ImageLoader;
 import com.android.gallery3d.ui.GLRoot;
 import com.android.gallery3d.ui.GLRootView;
 import com.android.gallery3d.util.PanoramaViewHelper;
 import com.android.gallery3d.util.ThreadPool;
 import com.android.photos.data.GalleryBitmapPool;
-
-import java.io.FileNotFoundException;
 
 public class AbstractGalleryActivity extends Activity implements GalleryContext {
     private static final String TAG = "AbstractGalleryActivity";
@@ -351,18 +347,18 @@ public class AbstractGalleryActivity extends Activity implements GalleryContext 
         if (uri == null) {
             return;
         }
-        String path = ImageLoader.getLocalPathFromUri(this, uri);
-        if (path != null) {
-            Uri localUri = Uri.parse(path);
-            path = localUri.getLastPathSegment();
-        } else {
-            path = uri.getLastPathSegment();
-        }
-        PrintHelper printer = new PrintHelper(this);
-        try {
-            printer.printBitmap(path, uri);
-        } catch (FileNotFoundException fnfe) {
-            Log.e(TAG, "Error printing an image", fnfe);
-        }
+//        String path = ImageLoader.getLocalPathFromUri(this, uri);
+//        if (path != null) {
+//            Uri localUri = Uri.parse(path);
+//            path = localUri.getLastPathSegment();
+//        } else {
+//            path = uri.getLastPathSegment();
+//        }
+//        PrintHelper printer = new PrintHelper(this);
+//        try {
+//            printer.printBitmap(path, uri);
+//        } catch (FileNotFoundException fnfe) {
+//            Log.e(TAG, "Error printing an image", fnfe);
+//        }
     }
 }

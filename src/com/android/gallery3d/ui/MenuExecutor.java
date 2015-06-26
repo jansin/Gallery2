@@ -16,6 +16,8 @@
 
 package com.android.gallery3d.ui;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -37,13 +39,10 @@ import com.android.gallery3d.data.DataManager;
 import com.android.gallery3d.data.MediaItem;
 import com.android.gallery3d.data.MediaObject;
 import com.android.gallery3d.data.Path;
-import com.android.gallery3d.filtershow.crop.CropActivity;
 import com.android.gallery3d.util.Future;
 import com.android.gallery3d.util.GalleryUtils;
 import com.android.gallery3d.util.ThreadPool.Job;
 import com.android.gallery3d.util.ThreadPool.JobContext;
-
-import java.util.ArrayList;
 
 public class MenuExecutor {
     private static final String TAG = "MenuExecutor";
@@ -239,11 +238,11 @@ public class MenuExecutor {
                     mSelectionManager.selectAll();
                 }
                 return;
-            case R.id.action_crop: {
-                Intent intent = getIntentBySingleSelectedPath(CropActivity.CROP_ACTION);
-                ((Activity) mActivity).startActivity(intent);
-                return;
-            }
+//            case R.id.action_crop: {
+//                Intent intent = getIntentBySingleSelectedPath(CropActivity.CROP_ACTION);
+//                ((Activity) mActivity).startActivity(intent);
+//                return;
+//            }
             case R.id.action_edit: {
                 Intent intent = getIntentBySingleSelectedPath(Intent.ACTION_EDIT)
                         .setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);

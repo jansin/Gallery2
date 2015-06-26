@@ -35,8 +35,6 @@ import com.android.gallery3d.data.DataManager;
 import com.android.gallery3d.data.LocalAlbum;
 import com.android.gallery3d.data.MediaSet;
 import com.android.gallery3d.data.Path;
-import com.android.gallery3d.filtershow.crop.CropActivity;
-import com.android.gallery3d.filtershow.crop.CropExtras;
 
 public class WidgetConfigure extends Activity {
     @SuppressWarnings("unused")
@@ -149,15 +147,15 @@ public class WidgetConfigure extends Activity {
         int widgetHeight = Math.round(height * scale);
 
         mPickedItem = data.getData();
-        Intent request = new Intent(CropActivity.CROP_ACTION, mPickedItem)
-                .putExtra(CropExtras.KEY_OUTPUT_X, widgetWidth)
-                .putExtra(CropExtras.KEY_OUTPUT_Y, widgetHeight)
-                .putExtra(CropExtras.KEY_ASPECT_X, widgetWidth)
-                .putExtra(CropExtras.KEY_ASPECT_Y, widgetHeight)
-                .putExtra(CropExtras.KEY_SCALE_UP_IF_NEEDED, true)
-                .putExtra(CropExtras.KEY_SCALE, true)
-                .putExtra(CropExtras.KEY_RETURN_DATA, true);
-        startActivityForResult(request, REQUEST_CROP_IMAGE);
+//        Intent request = new Intent(CropActivity.CROP_ACTION, mPickedItem)
+//                .putExtra(CropExtras.KEY_OUTPUT_X, widgetWidth)
+//                .putExtra(CropExtras.KEY_OUTPUT_Y, widgetHeight)
+//                .putExtra(CropExtras.KEY_ASPECT_X, widgetWidth)
+//                .putExtra(CropExtras.KEY_ASPECT_Y, widgetHeight)
+//                .putExtra(CropExtras.KEY_SCALE_UP_IF_NEEDED, true)
+//                .putExtra(CropExtras.KEY_SCALE, true)
+//                .putExtra(CropExtras.KEY_RETURN_DATA, true);
+//        startActivityForResult(request, REQUEST_CROP_IMAGE);
     }
 
     private void setChoosenAlbum(Intent data) {

@@ -16,6 +16,10 @@
 
 package com.android.gallery3d.data;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import android.annotation.TargetApi;
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -36,15 +40,10 @@ import com.android.gallery3d.common.ApiHelper;
 import com.android.gallery3d.common.BitmapUtils;
 import com.android.gallery3d.exif.ExifInterface;
 import com.android.gallery3d.exif.ExifTag;
-import com.android.gallery3d.filtershow.tools.SaveImage;
 import com.android.gallery3d.util.GalleryUtils;
 import com.android.gallery3d.util.ThreadPool.Job;
 import com.android.gallery3d.util.ThreadPool.JobContext;
 import com.android.gallery3d.util.UpdateHelper;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
 // LocalImage represents an image in the local storage.
 public class LocalImage extends LocalMediaItem {
@@ -267,7 +266,7 @@ public class LocalImage extends LocalMediaItem {
         GalleryUtils.assertNotInRenderThread();
         Uri baseUri = Images.Media.EXTERNAL_CONTENT_URI;
         ContentResolver contentResolver = mApplication.getContentResolver();
-        SaveImage.deleteAuxFiles(contentResolver, getContentUri());
+//        SaveImage.deleteAuxFiles(contentResolver, getContentUri());
         contentResolver.delete(baseUri, "_id=?",
                 new String[]{String.valueOf(id)});
     }
